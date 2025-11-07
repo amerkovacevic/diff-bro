@@ -1,0 +1,18 @@
+import { tailwindColors, tailwindFonts } from '../shared-design-tokens.js';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  theme: {
+    fontFamily: tailwindFonts,
+    extend: {
+      colors: tailwindColors,
+      boxShadow: {
+        glow: '0 20px 45px -20px rgba(65, 90, 119, 0.45)',
+      },
+    },
+  },
+  plugins: [],
+};
+
