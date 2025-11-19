@@ -7,10 +7,33 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 dist
 dist-ssr
+build
+out
 *.local
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*
+!.env.example
+
+# Firebase
+.firebase
+.firebaserc.local
+
+# Firebase service account keys (SECURITY CRITICAL)
+service-account*.json
+firebase-adminsdk*.json
+*-service-account*.json
+*serviceAccount*.json
+*.key.json
 
 # Editor directories and files
 .vscode/*
@@ -23,7 +46,29 @@ dist-ssr
 *.sln
 *.sw?
 
-# Firebase
-.firebase/
-.firebaserc
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
+# Testing
+coverage
+.nyc_output
+*.lcov
+
+# Cache
+.cache
+.parcel-cache
+.eslintcache
+.stylelintcache
+
+# OS
+Thumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+
+# Temporary
+*.tmp
+*.temp
+.tmp/
+.temp/
