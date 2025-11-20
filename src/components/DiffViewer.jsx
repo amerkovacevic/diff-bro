@@ -5,30 +5,30 @@ function DiffLine({ line, showCharDiff = false, otherLine }) {
   const getLineClass = (type) => {
     switch (type) {
       case 'added':
-        return 'bg-success-900/20 border-l-4 border-success-500';
+        return 'bg-success-100 border-l-4 border-success-500';
       case 'removed':
-        return 'bg-error-900/20 border-l-4 border-error-500';
+        return 'bg-error-100 border-l-4 border-error-500';
       case 'modified':
-        return 'bg-warning-900/20 border-l-4 border-warning-500';
+        return 'bg-warning-100 border-l-4 border-warning-500';
       case 'empty':
-        return 'bg-primary-800/50';
+        return 'bg-accent-100';
       default:
-        return 'bg-primary-700/50';
+        return 'bg-white';
     }
   };
 
   const getLineNumberClass = (type) => {
     switch (type) {
       case 'added':
-        return 'text-success-400';
+        return 'text-success-700';
       case 'removed':
-        return 'text-error-400';
+        return 'text-error-700';
       case 'modified':
-        return 'text-warning-400';
+        return 'text-warning-700';
       case 'empty':
-        return 'text-quaternary-700';
+        return 'text-primary-400';
       default:
-        return 'text-quaternary-600';
+        return 'text-primary-500';
     }
   };
 
@@ -45,9 +45,9 @@ function DiffLine({ line, showCharDiff = false, otherLine }) {
               key={idx}
               className={
                 item.type === 'added'
-                  ? 'bg-success-600/40'
+                  ? 'bg-success-300/60'
                   : item.type === 'removed'
-                  ? 'bg-error-600/40'
+                  ? 'bg-error-300/60'
                   : ''
               }
             >
@@ -66,7 +66,7 @@ function DiffLine({ line, showCharDiff = false, otherLine }) {
       <span className={`inline-block w-12 text-right mr-4 select-none ${getLineNumberClass(line.type)}`}>
         {line.type !== 'empty' ? line.line : ''}
       </span>
-      <span className="flex-1 whitespace-pre-wrap break-all text-accent-50">
+      <span className="flex-1 whitespace-pre-wrap break-all text-primary-900">
         {renderContent()}
       </span>
     </div>
@@ -88,13 +88,13 @@ export default function DiffViewer({ text1, text2, showCharDiff = true }) {
   // If both texts are empty, show a placeholder
   if (!text1 && !text2) {
     return (
-      <div className="flex h-full items-center justify-center rounded-xl border border-tertiary-600/50 bg-primary-700/50 p-12">
+      <div className="flex h-full items-center justify-center rounded-xl border border-primary-200 bg-white p-12">
         <div className="text-center">
           <div className="mb-4 text-6xl">📝</div>
-          <p className="text-lg font-medium text-quaternary-400">
+          <p className="text-lg font-medium text-primary-600">
             Enter text in both panels to see the differences
           </p>
-          <p className="mt-2 text-sm text-quaternary-500">
+          <p className="mt-2 text-sm text-primary-500">
             The diff comparison will appear here automatically
           </p>
         </div>
@@ -105,38 +105,38 @@ export default function DiffViewer({ text1, text2, showCharDiff = true }) {
   return (
     <div className="flex h-full flex-col">
       {/* Stats Bar */}
-      <div className="mb-4 flex flex-wrap gap-4 rounded-lg border border-tertiary-600/50 bg-secondary-700 p-4">
+      <div className="mb-4 flex flex-wrap gap-4 rounded-lg border border-primary-200 bg-white p-4">
         <div className="flex items-center gap-2">
-          <span className="text-sm text-quaternary-400">Total Lines:</span>
-          <span className="font-mono text-sm font-semibold text-accent-50">{stats.total}</span>
+          <span className="text-sm text-primary-600">Total Lines:</span>
+          <span className="font-mono text-sm font-semibold text-primary-900">{stats.total}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-success-500" />
-          <span className="text-sm text-quaternary-400">Added:</span>
-          <span className="font-mono text-sm font-semibold text-success-300">{stats.added}</span>
+          <span className="text-sm text-primary-600">Added:</span>
+          <span className="font-mono text-sm font-semibold text-success-700">{stats.added}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-error-500" />
-          <span className="text-sm text-quaternary-400">Removed:</span>
-          <span className="font-mono text-sm font-semibold text-error-300">{stats.removed}</span>
+          <span className="text-sm text-primary-600">Removed:</span>
+          <span className="font-mono text-sm font-semibold text-error-700">{stats.removed}</span>
         </div>
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-warning-500" />
-          <span className="text-sm text-quaternary-400">Modified:</span>
-          <span className="font-mono text-sm font-semibold text-warning-300">{stats.modified}</span>
+          <span className="text-sm text-primary-600">Modified:</span>
+          <span className="font-mono text-sm font-semibold text-warning-700">{stats.modified}</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-quaternary-400">Unchanged:</span>
-          <span className="font-mono text-sm font-semibold text-accent-50">{stats.equal}</span>
+          <span className="text-sm text-primary-600">Unchanged:</span>
+          <span className="font-mono text-sm font-semibold text-primary-900">{stats.equal}</span>
         </div>
       </div>
 
       {/* Diff View */}
       <div className="flex flex-1 flex-col gap-4 lg:flex-row">
         {/* Left Side - Original */}
-        <div className="flex-1 rounded-xl border border-tertiary-600/50 bg-primary-700">
-          <div className="border-b border-tertiary-600/50 bg-secondary-700 px-4 py-2">
-            <h3 className="text-sm font-display font-semibold text-accent-50">Original</h3>
+        <div className="flex-1 rounded-xl border border-primary-200 bg-white">
+          <div className="border-b border-primary-200 bg-accent-100 px-4 py-2">
+            <h3 className="text-sm font-display font-semibold text-primary-900">Original</h3>
           </div>
           <div>
             {diff1.map((line, idx) => (
@@ -151,9 +151,9 @@ export default function DiffViewer({ text1, text2, showCharDiff = true }) {
         </div>
 
         {/* Right Side - Modified */}
-        <div className="flex-1 rounded-xl border border-tertiary-600/50 bg-primary-700">
-          <div className="border-b border-tertiary-600/50 bg-secondary-700 px-4 py-2">
-            <h3 className="text-sm font-display font-semibold text-accent-50">Modified</h3>
+        <div className="flex-1 rounded-xl border border-primary-200 bg-white">
+          <div className="border-b border-primary-200 bg-accent-100 px-4 py-2">
+            <h3 className="text-sm font-display font-semibold text-primary-900">Modified</h3>
           </div>
           <div>
             {diff2.map((line, idx) => (

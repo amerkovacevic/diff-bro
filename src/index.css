@@ -18,15 +18,15 @@ textarea::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-track {
-  @apply bg-primary-700;
+  @apply bg-primary-200;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  @apply bg-tertiary-600 rounded;
+  @apply bg-primary-400 rounded;
 }
 
 textarea::-webkit-scrollbar-thumb:hover {
-  @apply bg-tertiary-500;
+  @apply bg-primary-500;
 }
 
 /* Line number styles */
@@ -37,28 +37,28 @@ textarea::-webkit-scrollbar-thumb:hover {
 .line-numbers .line::before {
   counter-increment: line;
   content: counter(line);
-  @apply inline-block w-12 text-right mr-4 text-quaternary-600 select-none;
+  @apply inline-block w-12 text-right mr-4 text-primary-500 select-none;
 }
 
 /* Diff highlighting */
 .diff-added {
-  @apply bg-success-900/30 text-success-200;
+  @apply bg-success-100 text-success-800;
 }
 
 .diff-removed {
-  @apply bg-error-900/30 text-error-200;
+  @apply bg-error-100 text-error-800;
 }
 
 .diff-modified {
-  @apply bg-warning-900/30 text-warning-200;
+  @apply bg-warning-100 text-warning-800;
 }
 
 /* Character-level diff highlighting */
 .char-diff-added {
-  @apply bg-success-600/40;
+  @apply bg-success-300/60;
 }
 
 .char-diff-removed {
-  @apply bg-error-600/40;
+  @apply bg-error-300/60;
 }
 

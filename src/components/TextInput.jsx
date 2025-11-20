@@ -27,22 +27,22 @@ export default function TextInput({ value, onChange, label, placeholder, storage
       {/* Header */}
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-lg font-display font-semibold text-accent-50">{label}</h3>
-          <span className="text-xs text-quaternary-500">
+          <h3 className="text-lg font-display font-semibold text-primary-900">{label}</h3>
+          <span className="text-xs text-primary-500">
             {lineCount} {lineCount === 1 ? 'line' : 'lines'} · {charCount} {charCount === 1 ? 'char' : 'chars'}
           </span>
         </div>
         <div className="flex gap-2">
           <button
             onClick={handlePaste}
-            className="rounded-lg bg-tertiary-700 px-3 py-1.5 text-xs font-medium text-accent-50 transition-colors hover:bg-tertiary-600"
+            className="rounded-lg bg-tertiary-100 px-3 py-1.5 text-xs font-medium text-tertiary-700 transition-colors hover:bg-tertiary-200 border border-tertiary-300"
             title="Paste from clipboard"
           >
             Paste
           </button>
           <button
             onClick={handleClear}
-            className="rounded-lg bg-secondary-600 px-3 py-1.5 text-xs font-medium text-accent-50 transition-colors hover:bg-secondary-500"
+            className="rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-primary-700 transition-colors hover:bg-accent-100 border border-primary-300"
             title="Clear text"
           >
             Clear
@@ -55,7 +55,7 @@ export default function TextInput({ value, onChange, label, placeholder, storage
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 w-full resize-none rounded-lg border border-tertiary-600/50 bg-primary-700 p-4 font-mono text-sm text-accent-50 placeholder-quaternary-600 focus:border-tertiary-500 focus:outline-none focus:ring-2 focus:ring-tertiary-500/50"
+        className="flex-1 w-full resize-none rounded-lg border border-primary-300 bg-white p-4 font-mono text-sm text-primary-900 placeholder-primary-400 focus:border-tertiary-500 focus:outline-none focus:ring-2 focus:ring-tertiary-500/50"
         spellCheck="false"
       />
     </div>

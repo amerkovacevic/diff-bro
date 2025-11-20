@@ -4,11 +4,7 @@ import TextInput from './components/TextInput.jsx';
 import DiffViewer from './components/DiffViewer.jsx';
 
 function Background() {
-  return (
-    <div className="pointer-events-none fixed inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(65,90,119,0.12),_rgba(13,27,42,0.95))]" />
-    </div>
-  );
+  return null;
 }
 
 export default function App() {
@@ -61,7 +57,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-primary-800 text-accent-50">
+    <div className="relative flex min-h-screen flex-col bg-accent-50 text-primary-900">
       <Background />
       
       <main className="relative z-10 mx-auto w-full max-w-7xl flex-1 px-6 py-8">
@@ -72,20 +68,20 @@ export default function App() {
           <div className="flex gap-2">
             <button
               onClick={() => setViewMode('split')}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors border ${
                 viewMode === 'split'
-                  ? 'bg-tertiary-600 text-accent-50'
-                  : 'bg-secondary-700 text-quaternary-400 hover:bg-secondary-600'
+                  ? 'bg-tertiary-100 text-tertiary-700 border-tertiary-300'
+                  : 'bg-white text-primary-600 hover:bg-accent-100 border-primary-200'
               }`}
             >
               Split View
             </button>
             <button
               onClick={() => setViewMode('diff')}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors border ${
                 viewMode === 'diff'
-                  ? 'bg-tertiary-600 text-accent-50'
-                  : 'bg-secondary-700 text-quaternary-400 hover:bg-secondary-600'
+                  ? 'bg-tertiary-100 text-tertiary-700 border-tertiary-300'
+                  : 'bg-white text-primary-600 hover:bg-accent-100 border-primary-200'
               }`}
             >
               Diff View
@@ -96,10 +92,10 @@ export default function App() {
             {viewMode === 'diff' && (
               <button
                 onClick={() => setShowCharDiff(!showCharDiff)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors border ${
                   showCharDiff
-                    ? 'bg-tertiary-600 text-accent-50'
-                    : 'bg-secondary-700 text-quaternary-400 hover:bg-secondary-600'
+                    ? 'bg-tertiary-100 text-tertiary-700 border-tertiary-300'
+                    : 'bg-white text-primary-600 hover:bg-accent-100 border-primary-200'
                 }`}
                 title="Toggle character-level highlighting"
               >
@@ -108,14 +104,14 @@ export default function App() {
             )}
             <button
               onClick={handleSwap}
-              className="rounded-lg bg-secondary-700 px-4 py-2 text-sm font-medium text-accent-50 transition-colors hover:bg-secondary-600"
+              className="rounded-lg bg-white border border-primary-300 px-4 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-accent-100"
               title="Swap left and right text"
             >
               ⇄ Swap
             </button>
             <button
               onClick={handleClearBoth}
-              className="rounded-lg bg-secondary-700 px-4 py-2 text-sm font-medium text-accent-50 transition-colors hover:bg-secondary-600"
+              className="rounded-lg bg-white border border-primary-300 px-4 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-accent-100"
               title="Clear all text"
             >
               Clear All
@@ -127,7 +123,7 @@ export default function App() {
         {viewMode === 'split' ? (
           // Split View - Side by side text inputs
           <div className="grid gap-6 lg:grid-cols-2" style={{ minHeight: '500px' }}>
-            <div className="flex flex-col rounded-xl border border-tertiary-600/50 bg-primary-700/50 p-6">
+            <div className="flex flex-col rounded-xl border border-primary-200 bg-white p-6">
               <TextInput
                 value={text1}
                 onChange={setText1}
@@ -136,7 +132,7 @@ export default function App() {
                 storageKey="diffBro_text1"
               />
             </div>
-            <div className="flex flex-col rounded-xl border border-tertiary-600/50 bg-primary-700/50 p-6">
+            <div className="flex flex-col rounded-xl border border-primary-200 bg-white p-6">
               <TextInput
                 value={text2}
                 onChange={setText2}
@@ -148,35 +144,35 @@ export default function App() {
           </div>
         ) : (
           // Diff View - Show differences
-          <div className="rounded-xl border border-tertiary-600/50 bg-primary-700/50 p-6">
+          <div className="rounded-xl border border-primary-200 bg-white p-6">
             <DiffViewer text1={text1} text2={text2} showCharDiff={showCharDiff} />
           </div>
         )}
 
         {/* Tips */}
-        <div className="mt-8 rounded-xl border border-tertiary-600/30 bg-secondary-700/50 p-6">
-          <h3 className="mb-3 text-lg font-display font-semibold text-accent-50">
+        <div className="mt-8 rounded-xl border border-primary-200 bg-white p-6">
+          <h3 className="mb-3 text-lg font-display font-semibold text-primary-900">
             💡 Tips
           </h3>
-          <ul className="space-y-2 text-sm text-quaternary-300">
+          <ul className="space-y-2 text-sm text-primary-700">
             <li className="flex items-start gap-2">
-              <span className="text-tertiary-400">•</span>
-              <span>Use <strong className="text-accent-50">Split View</strong> to edit both texts side-by-side</span>
+              <span className="text-primary-600">•</span>
+              <span>Use <strong className="text-primary-900">Split View</strong> to edit both texts side-by-side</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-tertiary-400">•</span>
-              <span>Switch to <strong className="text-accent-50">Diff View</strong> to see highlighted differences</span>
+              <span className="text-primary-600">•</span>
+              <span>Switch to <strong className="text-primary-900">Diff View</strong> to see highlighted differences</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-tertiary-400">•</span>
-              <span>Toggle <strong className="text-accent-50">Char Diff</strong> to see character-level changes within modified lines</span>
+              <span className="text-primary-600">•</span>
+              <span>Toggle <strong className="text-primary-900">Char Diff</strong> to see character-level changes within modified lines</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-tertiary-400">•</span>
+              <span className="text-primary-600">•</span>
               <span>Your text is automatically saved in your browser</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-tertiary-400">•</span>
+              <span className="text-primary-600">•</span>
               <span>Green = Added, Red = Removed, Orange = Modified</span>
             </li>
           </ul>
@@ -184,7 +180,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 w-full border-t border-tertiary-500/30 bg-primary-800/80 py-4 text-center text-xs text-quaternary-500">
+      <footer className="relative z-10 w-full border-t border-primary-200 bg-accent-100 py-4 text-center text-xs text-primary-600">
         <p>&copy; {new Date().getFullYear()} Amer Kovacevic All rights reserved.</p>
       </footer>
     </div>
